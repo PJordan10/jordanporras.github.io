@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html class="scroll-smooth dark" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Jordan's Portfolio</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#2dd4bf", // Teal-400 for better contrast on dark
+            "navy-deep": "#0a0f1a",
+            "navy-sidebar": "#0f172a",
+            "navy-card": "#1e293b",
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+            display: ["Inter", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"],
+          },
+          boxShadow: {
+            'neon': '0 0 15px -3px rgba(45, 212, 191, 0.4), 0 0 6px -2px rgba(45, 212, 191, 0.2)',
+            'neon-hover': '0 0 25px -2px rgba(45, 212, 191, 0.6), 0 0 10px -1px rgba(45, 212, 191, 0.3)',
+          }
+        },
+      },
+    };
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+        .neon-glow {
+          box-shadow: 0 0 15px -3px rgba(45, 212, 191, 0.5);
+        }
+        .neon-text {
+            text-shadow: 0 0 8px rgba(45, 212, 191, 0.4);
+        }
+        .sidebar-gradient {
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.95) 0%, rgba(10, 15, 26, 1) 100%), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #0a0f1a;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #334155;
+        border-radius: 10px;
+      }
+    </style>
+</head>
+
+<body class="bg-navy-deep text-slate-100 font-sans transition-colors duration-300 custom-scrollbar">
+  <aside
+    class="hidden lg:flex fixed left-0 top-0 h-screen w-80 sidebar-gradient flex-col items-center justify-between p-12 border-r border-slate-800/50 z-50">
+    <div class="flex flex-col items-center text-center">
+      <div class="relative mb-8">
+        <div class="w-32 h-32 rounded-full border-2 border-primary/30 p-1 shadow-neon">
+          <img alt="Jordan Porras"
+            class="w-full h-full object-cover rounded-full grayscale brightness-90 hover:grayscale-0 hover:brightness-110 transition-all duration-500"
+            src="images/photo1.png" />
+        </div>
+        <div
+          class="absolute bottom-2 right-2 w-5 h-5 bg-primary border-4 border-navy-sidebar rounded-full shadow-neon hidden">
+        </div>
+      </div>
+      <h1 class="text-2xl font-extrabold tracking-tight text-white mb-2">Jordan Porras</h1>
+      <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-10">Data Analyst -<br />Evolving
+        into Data Engineering</p>
+      <nav class="space-y-6 w-full text-left">        
+        <a class="block text-slate-400 hover:text-primary transition-all flex items-center gap-3 group" href="#projects">
+          <span class="w-2 h-2 rounded-full bg-slate-700 group-hover:bg-primary group-hover:w-12 transition-all"></span>
+          <span class="text-sm font-semibold tracking-wide">Projects</span>
+        </a>
+        <a class="block text-slate-400 hover:text-primary transition-all flex items-center gap-3 group" href="#arsenal">
+          <span class="w-2 h-2 rounded-full bg-slate-700 group-hover:bg-primary group-hover:w-12 transition-all"></span>
+          <span class="text-sm font-semibold tracking-wide">Skillset</span>
+        </a>
+        <!--<a class="block text-slate-400 hover:text-primary transition-all flex items-center gap-3 group" href="#learning">
+          <span class="w-2 h-2 rounded-full bg-slate-700 group-hover:bg-primary group-hover:w-12 transition-all"></span>
+          <span class="text-sm font-semibold tracking-wide">Currently Learning</span>
+        </a>-->
+        <a class="block text-slate-400 hover:text-primary transition-all flex items-center gap-3 group" href="#about">
+          <span class="w-2 h-2 rounded-full bg-slate-700 group-hover:bg-primary group-hover:w-12 transition-all"></span>
+          <span class="text-sm font-semibold tracking-wide">About Me</span>
+        </a>
+        <a class="block text-slate-400 hover:text-primary transition-all flex items-center gap-3 group" href="#connect">
+          <span class="w-2 h-2 rounded-full bg-slate-700 group-hover:bg-primary group-hover:w-12 transition-all"></span>
+          <span class="text-sm font-semibold tracking-wide">Let's Connect!</span>
+        </a>
+      </nav>
+    </div>
+    <div class="w-full">
+      <div class="flex justify-center gap-6 mb-8 text-slate-500">
+        <!-- Iconos -->
+        <!-- GitHub -->
+        <a class="hover:text-primary transition-colors" href="https://github.com/PJordan10" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg
+            class="w-5 h-5 fill-current" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <title>GitHub</title>
+            <path
+              d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12">
+            </path>
+          </svg></a>
+        <!-- LinkedIn -->
+        <a class="hover:text-primary transition-colors" href="https://www.linkedin.com/in/jordan-porras" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg
+            class="w-5 h-5 fill-current" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <title>LinkedIn</title>
+            <path
+              d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.454C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z">
+            </path>
+          </svg></a>
+        <!-- Email -->
+        <a class="hover:text-primary transition-colors" href="mailto:jporras1994@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email"><svg
+            class="w-5 h-5 fill-current" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <title>Email</title>
+            <path d="M12 12.713l11.985-8.713H.015L12 12.713zm0 2.574L.015 6.001v11.998h23.97V6.001L12 15.287z"></path>
+          </svg></a>
+      </div>
+      <div class="text-[10px] text-slate-600 text-center space-y-1 font-mono tracking-tighter">
+        <p>© 2026 JORDAN PORRAS</p>
+        <!-- <p>BUCARAMANGA, COLOMBIA</p> -->
+      </div>
+    </div>
+  </aside>
+  <main class="lg:ml-80 min-h-screen">
+    <header
+      class="lg:hidden flex items-center justify-between p-6 bg-navy-sidebar border-b border-slate-800 sticky top-0 z-40">
+      <span class="font-bold text-lg tracking-tight text-white">Jordan Porras</span>
+      <span class="material-symbols-outlined text-primary">menu</span>
+    </header>
+    <div class="max-w-5xl mx-auto px-6 lg:px-20 py-16 lg:py-24 space-y-40">
+      
+      <section class="space-y-16" id="projects">
+        <div class="space-y-4">
+          <h2 class="text-primary font-mono text-sm tracking-widest uppercase font-semibold">/ Jordan's Portfolio</h2>
+          <h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1]">
+            Bridging <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-teal-200 neon-text">Data, Insight, and Impact</span>.
+          </h1>
+        </div>
+        <div class="lg:col-span-3 space-y-6 text-lg text-slate-300 leading-relaxed">
+        <p>I build analytics-ready data models and dashboards that turn messy operational data into reliable insights.</p>
+        </div>
+        <div class="flex items-end justify-between">
+          <div class="space-y-3">
+            <h2 class="text-4xl font-extrabold text-white tracking-tight">Featured Projects</h2>
+            <div class="h-1.5 w-24 bg-primary shadow-neon"></div>
+          </div>
+          <a class="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all group"
+            href="https://github.com/PJordan10" target="_blank" rel="noopener noreferrer">
+            GitHub Page <span
+              class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">open_in_new</span>
+          </a>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-10">
+          <div
+            class="group relative bg-navy-sidebar rounded-2xl overflow-hidden border border-slate-800 hover:border-primary/40 transition-all duration-500 shadow-xl">
+            <div class="h-64 overflow-hidden relative">
+              <img alt="Shipment Lifecycle"
+                class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                src="images/shipment_lifecycle.png" />
+              <div
+                class="absolute inset-0 bg-navy-deep/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+                <a href="https://github.com/PJordan10/shipment_lifecycle" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="bg-primary text-navy-deep px-6 py-2 rounded-full font-bold shadow-neon">View
+                    Project</span>
+                </a>
+              </div>
+            </div>
+            <div class="p-8 space-y-4">
+              <div class="flex gap-3">
+                <span
+                  class="text-[10px] font-bold tracking-widest uppercase px-2 py-1 bg-primary/10 text-primary border border-primary/20 rounded">MySQL</span>
+                <span
+                  class="text-[10px] font-bold tracking-widest uppercase px-2 py-1 bg-primary/10 text-primary border border-primary/20 rounded">Python</span>
+                <span
+                  class="text-[10px] font-bold tracking-widest uppercase px-2 py-1 bg-primary/10 text-primary border border-primary/20 rounded">Pandas</span>
+              </div>
+              <h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">Shipment Lifecycle
+                Analysis</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                <span class="text-white font-medium">Key Insight: </span>Facility-level detention impacted <span class="text-white font-medium">~73% of shipments</span> 
+                  and delayed invoice readiness 
+                despite strong on-time delivery.</br></br>Built an analytics-ready data layer using SQL views and Python to model the full shipment lifecycle 
+                and link operational delays to financial impact.
+              </p>
+            </div>
+          </div>
+          <div
+            class="group relative bg-navy-sidebar rounded-2xl overflow-hidden border border-slate-800 hover:border-primary/40 transition-all duration-500 shadow-xl">
+            <div class="h-64 overflow-hidden relative">
+              <img alt="Sales Analysis"
+                class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                src="images/sales_analysis_plot.png" />
+              <div
+                class="absolute inset-0 bg-navy-deep/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+                <a href="https://github.com/PJordan10/SalesAnalysis_Printing" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="bg-primary text-navy-deep px-6 py-2 rounded-full font-bold shadow-neon">View
+                    Project</span>
+                </a>
+              </div>
+            </div>
+            <div class="p-8 space-y-4">
+              <div class="flex gap-3">
+                <span
+                  class="text-[10px] font-bold tracking-widest uppercase px-2 py-1 bg-primary/10 text-primary border border-primary/20 rounded">Python</span>
+                <span
+                  class="text-[10px] font-bold tracking-widest uppercase px-2 py-1 bg-primary/10 text-primary border border-primary/20 rounded">Pandas</span>
+                <span
+                  class="text-[10px] font-bold tracking-widest uppercase px-2 py-1 bg-primary/10 text-primary border border-primary/20 rounded">Matplotlib</span>
+              </div>
+              <h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">Strategic Sales &amp; Profitability
+                Analysis</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                <span class="text-white font-medium">Key Insight: </span>Digital channels now represent <span class="text-white font-medium">58% of total revenue</span>, reaching a peak of <span class="text-white font-medium">78% in 2024</span>, 
+                with high margin performance concentrated among top clients.</br></br>Cleaned and analyzed 15 years of sales data in Python to evaluate revenue 
+                trends, profitability, and seasonal demand patterns.
+              </p>
+            </div>
+          </div>
+          <div
+            class="group relative bg-navy-sidebar rounded-2xl overflow-hidden border border-slate-800 hover:border-primary/40 transition-all duration-500 shadow-xl">
+            <div class="h-64 overflow-hidden relative">
+              <img alt="Databricks Dashboard"
+                class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                src="images/logistic_dashboard_preview.png" />
+              <div
+                class="absolute inset-0 bg-navy-deep/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+                <a href="https://github.com/PJordan10/logistics-dbx-repo" target="_blank"
+                  rel="noopener noreferrer">
+                <span class="bg-primary text-navy-deep px-6 py-2 rounded-full font-bold shadow-neon">View Project</span>
+                </a>
+              </div>
+            </div>
+            <div class="p-8 space-y-4">
+              <div class="flex gap-3">
+                <span
+                  class="text-[10px] font-bold tracking-widest uppercase px-2 py-1 bg-primary/10 text-primary border border-primary/20 rounded">Databricks</span>
+                <span
+                  class="text-[10px] font-bold tracking-widest uppercase px-2 py-1 bg-primary/10 text-primary border border-primary/20 rounded">SQL</span>
+              </div>
+              <h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">Databricks Logistics KPIs
+                Dashboard</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                <span class="text-white font-medium">NOTE:</span> Need Databricks account to visualize.</br></br><span class="text-white font-medium">Key Insight: </span>On-Time Delivery performance 
+                <span class="text-white font-medium">dropped to 43.4%</span>, driven by mechanical failures and traffic conditions.</br></br>Built 
+                SQL-based KPI models and dashboards in Databricks to monitor fleet performance and operational efficiency.
+              </p>
+            </div>
+          </div>
+          <div
+            class="group relative bg-navy-sidebar rounded-2xl overflow-hidden border border-slate-800 hover:border-primary/40 transition-all duration-500 shadow-xl">
+            <div class="h-64 overflow-hidden relative">
+              <img alt="SQL Pipeline"
+                class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                src="images/mysql_datacleaning.png" />
+              <div
+                class="absolute inset-0 bg-navy-deep/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+                <a href="https://github.com/PJordan10/Layoffs-Dataset-Cleaning" target="_blank"
+                  rel="noopener noreferrer">
+                <span class="bg-primary text-navy-deep px-6 py-2 rounded-full font-bold shadow-neon">View Project</span>
+                </a>
+              </div>
+            </div>
+            <div class="p-8 space-y-4">
+              <div class="flex gap-3">
+                <span
+                  class="text-[10px] font-bold tracking-widest uppercase px-2 py-1 bg-primary/10 text-primary border border-primary/20 rounded">SQL</span>
+                <span
+                  class="text-[10px] font-bold tracking-widest uppercase px-2 py-1 bg-primary/10 text-primary border border-primary/20 rounded">MySQL</span>
+              </div>
+              <h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">Data Cleaning Pipeline - Global
+                Layoffs</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                <span class="text-white font-medium">Key Insight: </span>Raw, incosistent data was transformed into a <span class="text-white font-medium">reliable, analysis-ready</span> dataset.</br></br>
+                Designed a <span class="text-white font-medium">production-style SQL pipeline</span> with staging tables, deduplication, 
+                normalization, and validation checks.
+              </p>
+            </div>
+          </div>                 
+          <div
+            class="group relative bg-navy-sidebar rounded-2xl overflow-hidden border border-slate-800 hover:border-primary/40 transition-all duration-500 shadow-xl">
+            <div class="h-64 overflow-hidden relative">
+              <img alt="Tableau Dashboards"
+                class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                src="images/Tableau-Logo.png" />
+              <div
+                class="absolute inset-0 bg-navy-deep/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+                <a href="https://public.tableau.com/app/profile/jordan.porras/vizzes" target="_blank"
+                  rel="noopener noreferrer">
+                <span class="bg-primary text-navy-deep px-6 py-2 rounded-full font-bold shadow-neon">View Dashboards</span>
+                </a>
+              </div>
+            </div>
+            <div class="p-8 space-y-4">
+              <div class="flex gap-3">
+                <span
+                  class="text-[10px] font-bold tracking-widest uppercase px-2 py-1 bg-primary/10 text-primary border border-primary/20 rounded">Tableau</span>
+              </div>
+              <h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">Tableau Dashboards
+              </h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Take a look at some of the <span
+                  class="text-white font-medium">Tableau dashboards</span> I've worked on, they mainly focus on trends, comparisons, and KPI monitoring.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="space-y-16" id="arsenal">
+        <div class="space-y-3">
+          <h2 class="text-4xl font-extrabold text-white tracking-tight">Skillset</h2>
+          <div class="h-1.5 w-24 bg-primary shadow-neon"></div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-16">
+          <div class="space-y-10">
+            <div class="group">
+              <div class="flex items-center gap-4 mb-6">
+                <div
+                  class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
+                  <span class="material-symbols-outlined text-primary neon-text">code</span>
+                </div>
+                <h3 class="text-2xl font-bold text-white">Technical Skills</h3>
+              </div>
+              <ul class="space-y-6 border-l-2 border-slate-800 ml-5 pl-8">
+                <li class="relative">
+                  <span class="absolute -left-[37px] top-1.5 w-2.5 h-2.5 rounded-full bg-primary shadow-neon"></span>
+                  <span class="block font-bold text-primary text-sm mb-1 uppercase tracking-widest">SQL</span>
+                  <span class="text-slate-300 text-base">Joins, CTEs, Window Functions, Views, Data Cleaning, Deduplication, Query Optimization.</span>
+                </li>
+                <li class="relative">
+                  <span class="absolute -left-[37px] top-1.5 w-2.5 h-2.5 rounded-full bg-primary shadow-neon"></span>
+                  <span class="block font-bold text-primary text-sm mb-1 uppercase tracking-widest">Python</span>
+                  <span class="text-slate-300 text-base">Pandas, NumPy, Data Cleaning & Transformation, Time-Series Analysis, Basic Data Ingestion.</span>
+                </li>
+                <li class="relative">
+                  <span class="absolute -left-[37px] top-1.5 w-2.5 h-2.5 rounded-full bg-primary shadow-neon"></span>
+                  <span class="block font-bold text-primary text-sm mb-1 uppercase tracking-widest">Engineering &amp; Data Foundations</span>
+                  <span class="text-slate-300 text-base">Basics of data engineering lifecycle, relational data modeling, and analytic layer concepts.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="space-y-10">
+            <div class="group">
+              <div class="flex items-center gap-4 mb-6">
+                <div
+                  class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
+                  <span class="material-symbols-outlined text-primary neon-text">database</span>
+                </div>
+                <h3 class="text-2xl font-bold text-white">Tools &amp; Platforms</h3>
+              </div>
+              <ul class="space-y-6 border-l-2 border-slate-800 ml-5 pl-8">
+                <li class="relative">
+                  <span class="absolute -left-[37px] top-1.5 w-2.5 h-2.5 rounded-full bg-primary shadow-neon"></span>
+                  <span class="block font-bold text-primary text-sm mb-1 uppercase tracking-widest">Visualization &amp; Reporting</span>
+                  <span class="text-slate-300 text-base">Tableau, Power BI, Matplotlib, Excel.</span>
+                </li>
+                <li class="relative">
+                  <span class="absolute -left-[37px] top-1.5 w-2.5 h-2.5 rounded-full bg-primary shadow-neon"></span>
+                  <span class="block font-bold text-primary text-sm mb-1 uppercase tracking-widest">Cloud &amp; Data Platforms</span>
+                  <span class="text-slate-300 text-base">AWS (Understanding of EC2, S3, RDS), Databricks (SQL, notebooks, dashboards), Snowflake (foundations).</span>
+                </li>
+                <li class="relative">
+                  <span class="absolute -left-[37px] top-1.5 w-2.5 h-2.5 rounded-full bg-primary shadow-neon"></span>
+                  <span class="block font-bold text-primary text-sm mb-1 uppercase tracking-widest">QA, Dev &amp; Workflow</span>
+                  <span class="text-slate-300 text-base">Git/GitHub, Data Validation Practices, Version Control, QA-Oriented Data Review.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--<section class="space-y-10" id="learning">
+        <div class="space-y-3">
+            <h2 class="text-4xl font-extrabold text-white tracking-tight">Currently Learning &amp; Expanding Into Data Engineering</h2>
+            <div class="h-1.5 w-24 bg-primary shadow-neon"></div>
+          </div>
+        
+          <div class="lg:col-span-3 space-y-6 text-lg text-slate-300 leading-relaxed">
+            <p>I’m actively strengthening my data engineering foundations through DeepLearning.AI’s Data Engineer Professional Certificate, with a focus on 
+              building reliable, business-oriented data systems.</p>
+            <p><span class="text-white font-bold">Core focus areas:</span></p>
+            <ul class="list-disc list-inside space-y-3">
+              <li><span class="text-primary font-medium">Data Engineering Lifecycle:</span> Generating, ingesting, storing, transforming, and serving data end-to-end.</li>
+              <li><span class="text-primary font-medium">Data Architecture &amp; Modeling:</span> Requirements analysis, relational modeling, data warehousing, and data lakes.</li>
+              <li><span class="text-primary font-medium">Pipelines &amp; Orchestration:</span> Batch data pipelines, data integration patterns, and orchestration concepts (Airflow fundamentals).</li>
+              <li><span class="text-primary font-medium">Scalable Processing:</span> Foundations of distributed data processing (Apache Spark, Hadoop).</li>
+              <li><span class="text-primary font-medium">Cloud Platforms:</span> Applying data architecture principles on AWS (storage, compute, and analytics services).</li>
+            </ul>
+            <p>My goal is to continue learning beyond analysis and contribute to the design, reliability, and scalability of data systems that power analytics and decision-making.</p>
+          </div>-->
+        
+      <section class="space-y-10" id="about">
+        <div class="space-y-3">
+            <h2 class="text-4xl font-extrabold text-white tracking-tight">About Me</h2>
+            <div class="h-1.5 w-24 bg-primary shadow-neon"></div>
+          </div>
+        <div class="grid lg:grid-cols-5 gap-16 pt-8">
+          <div class="lg:col-span-3 space-y-6 text-lg text-slate-300 leading-relaxed">
+            <p>
+              I'm a Data Analyst with a background in <span class="text-white font-bold">Operations Quality and Systems Engineering</span>, 
+              now building solid foundations in analytics engineering and data engineering.
+            </p>
+            <p>
+              I work with real-world, <span class="text-primary font-medium italic underline decoration-primary/40 underline-offset-4">messy operational 
+              data</span> - cleaning it, validating it, and shaping it into datasets teams can rely on. My QA experience influences how I approach data, 
+              pushing me to focus on accuracy, consistency, and how data decisions affect downstream work.
+            </p>
+            <p>
+              I enjoy connecting technical work with business context, and I'm especially interested in roles where I can continue growing from analytics into 
+              <span class="font-semibold text-primary">data engineering</span> over time.
+            </p>
+            <div class="flex flex-wrap gap-6 pt-6">
+              <button
+                class="bg-primary hover:bg-teal-300 text-navy-deep px-8 py-4 rounded-full font-extrabold transition-all shadow-neon hover:shadow-neon-hover flex items-center gap-3"
+                onclick="window.open('JordanPorras_PortfolioResume.pdf', '_blank')">
+                <span class="material-symbols-outlined font-bold">download</span> Download Resume
+              </button>
+              <a class="px-8 py-4 rounded-full border border-slate-700 hover:border-primary hover:text-primary transition-all font-bold flex items-center gap-2"
+                href="#projects">
+                View Projects
+              </a>
+            </div>
+          </div>
+          <div class="lg:col-span-2 hidden lg:flex items-center justify-center">
+            <div
+              class="w-full aspect-square rounded-3xl bg-navy-sidebar border border-slate-800 p-10 flex flex-col justify-center relative overflow-hidden group">
+              <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                <span class="material-symbols-outlined text-8xl text-primary">bar_chart</span>
+              </div>
+              <div class="font-mono text-primary mb-4 flex items-center gap-2">
+                <!--<span class="w-2 h-2 rounded-full bg-primary animate-none"></span>-->
+              </br></br># Philosophy
+              </div>
+              <p class="text-sm italic text-slate-400 mb-8 leading-relaxed relative z-10">
+                Data-driven decisions start with data you can trust.
+              </p>
+              <div class="flex gap-2">
+                <div class="w-8 h-1 rounded-full bg-primary"></div>
+                <div class="w-4 h-1 rounded-full bg-slate-700"></div>
+                <div class="w-4 h-1 rounded-full bg-slate-700"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        class="bg-navy-sidebar border border-slate-800 text-white rounded-[2rem] p-10 lg:p-20 space-y-10 relative overflow-hidden group shadow-2xl"
+        id="connect">
+        <div
+          class="absolute -right-20 -top-20 w-80 h-80 bg-primary/10 rounded-full blur-[100px] group-hover:bg-primary/20 transition-all duration-700">
+        </div>
+        <div class="absolute -left-20 -bottom-20 w-80 h-80 bg-blue-500/10 rounded-full blur-[100px]"></div>
+        <div class="relative z-10 max-w-2xl">
+          <h2 class="text-5xl font-extrabold mb-8 italic tracking-tighter">Let's <span
+              class="text-primary neon-text">Connect!</span></h2>
+          <p class="text-slate-400 text-xl leading-relaxed mb-12">
+            I'm always open to connecting with <span class="text-white font-semibold">teams, mentors</span> and <span
+              class="text-white font-semibold">data professionals</span>. Feel free to reach out!
+          </p>
+          <div class="flex flex-wrap gap-6">
+            <a class="bg-primary hover:bg-teal-300 text-navy-deep px-10 py-5 rounded-full font-extrabold transition-all flex items-center gap-3 shadow-neon hover:shadow-neon-hover transform hover:-translate-y-1"
+              href="https://www.linkedin.com/in/jordan-porras" target="_blank" rel="noopener noreferrer">
+              <span class="material-symbols-outlined font-bold">link</span> LinkedIn
+            </a>
+            <a class="bg-slate-800 hover:bg-slate-700 text-white px-10 py-5 rounded-full font-extrabold transition-all flex items-center gap-3 border border-slate-700 transform hover:-translate-y-1"
+              href="mailto:jporras1994@gmail.com" target="_blank" rel="noopener noreferrer">
+              <span class="material-symbols-outlined">alternate_email</span> Email Me
+            </a>
+          </div>
+        </div>
+        <div class="pt-10 border-t border-slate-800/50 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div class="flex items-center gap-3 text-slate-400 text-sm font-mono uppercase tracking-widest">
+            <span class="material-symbols-outlined text-primary text-lg">location_on</span>
+            Bucaramanga, Colombia
+          </div>
+          <div class="flex gap-8 text-slate-500 text-sm font-mono">
+            <!-- <a class="hover:text-primary transition-colors" href="https://github.com/PJordan10">GITHUB</a>
+<a class="hover:text-primary transition-colors" href="#">TWITTER</a>
+<a class="hover:text-primary transition-colors" href="#">DOCS</a> -->
+          </div>
+        </div>
+      </section>
+      <footer class="pt-16 border-t border-slate-800/50 flex flex-col md:flex-row justify-between gap-6 pb-20">
+        <div class="text-slate-600 text-xs font-mono uppercase tracking-widest">
+          © 2026 Jordan Porras | <a href="https://stitch.withgoogle.com" target="_blank" rel="noopener noreferrer">Design: Stitch by Google</a>
+        </div>
+        <div class="flex gap-8 text-[10px] font-bold text-slate-600 uppercase tracking-[0.2em]">
+          Built with precision &amp; Tailwind
+        </div>
+      </footer>
+    </div>
+  </main>
+  <div class="hidden fixed inset-0 z-[100] bg-navy-deep/95 backdrop-blur-md items-center justify-center p-6" id="modal">
+    <div
+      class="bg-navy-sidebar border border-slate-800 max-w-4xl w-full h-[80vh] rounded-3xl overflow-hidden relative shadow-2xl">
+      <button
+        class="absolute top-6 right-6 p-2 bg-slate-800 hover:bg-slate-700 text-white rounded-full transition-colors">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+      <div class="h-full overflow-y-auto p-12 custom-scrollbar">
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
